@@ -1,16 +1,19 @@
 #include <iostream>
-#include <cstdlib>
+#include <fstream>
 #include <string>
+#include <cstdlib>
+#include <stdexcept>
 
 bool Break = false;
 
-void RunCommand(std::string& Command) {
-    std::getline(std::cin >> std::ws, Command);
+// The function that processes each line from the file.
+void RunCommand(const std::string& commandLine) {
+    std::string Command = commandLine;
 
-    // Commands
+    // Commands...
 
     // J.A.L Exit
-    if (Command == "exit" or Command == "Exit") {
+    if (Command == "exit" || Command == "Exit") {
         Break = true;
     }
     // J.A.L Credits
@@ -68,7 +71,6 @@ void RunCommand(std::string& Command) {
     }
     // J.A.L Pause Command
     else if (Command == "pause") {
-        std::string Pause = Command.substr(5);
         std::string Full_Pause = "powershell.exe -command pause";
         std::system(Full_Pause.c_str());
     }
@@ -122,18 +124,52 @@ void RunCommand(std::string& Command) {
     }
 }
 
-int main() {
-    std::string Command;
-    std::cout << "-- J.A.L. --";
+// Function to read and process the .jalc file based on command-line arguments.
+void processJalcFileFromArgs(int argc, char* argv[]) {
+    // Check if a file path was provided.
+    if (argc < 2) {
+        throw std::runtime_error("No file specified. Usage: <program> <filename>");
+    }
 
-    while (true) {
-        std::cout << "\n";
-        // Run Selected Command
-        RunCommand(Command);
+    // The first command-line argument (argv[1]) is the file path.
+    std::string filePath = argv[1];
 
-        if (Break == true) {
-            break;
+    std::ifstream inputFile(filePath);
+    if (!inputFile.is_open()) {
+        throw std::runtime_error("Could not open file: " + filePath);
+    }
+
+    std::string line;
+    while (std::getline(inputFile, line)) {
+        if (!line.empty()) {
+            RunCommand(line);
         }
+    }
+
+    inputFile.close();
+}
+
+int main(int argc, char* argv[]) {
+    std::string command;
+    std::cout << "-- J.A.L. --" << std::endl;
+
+    // Check if a file is being processed from command-line
+    if (argc >= 2) {
+        try {
+            processJalcFileFromArgs(argc, argv);
+        }
+        catch (const std::runtime_error& e) {
+            std::cerr << "Error: " << e.what() << std::endl;
+            return 1;
+        }
+    }
+
+    // Interactive loop
+    while (!Break) {
+        std::cout << "\n";
+        std::cout << ">>> ";
+        std::getline(std::cin, command);
+        RunCommand(command);
     }
     return 0;
 }
