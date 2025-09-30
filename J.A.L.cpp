@@ -55,6 +55,27 @@ void RunCommand(std::string& Command) {
         std::string full_command = "powershell.exe -command Stop-Process -Force -Id " + pid_str;
         std::system(full_command.c_str());
     }
+    // J.A.L Open File Command
+    else if (Command.rfind("open ", 0) == 0) {
+        std::string Open_Exe = Command.substr(5);
+        std::string Full_Cmd = "start " + Open_Exe;
+        std::system(Full_Cmd.c_str());
+    }
+    // J.A.L Print Command
+    else if (Command.substr(0, 8) == "display ") {
+        std::string text_to_display = Command.substr(8);
+        std::cout << text_to_display << std::endl;
+    }
+    // J.A.L Pause Command
+    else if (Command == "pause") {
+        std::string Pause = Command.substr(5);
+        std::string Full_Pause = "powershell.exe -command pause";
+        std::system(Full_Pause.c_str());
+    }
+    // J.A.L Color Command
+    else if (Command.rfind("color ", 0) == 0) {
+        std::system(("color " + Command.substr(6)).c_str());
+    }
     // J.A.L Empty Line
     else if (Command.empty()) {
         // Do nothing for empty input.
