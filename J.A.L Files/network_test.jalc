@@ -1,0 +1,12 @@
+display --- Network Connectivity Test ---
+display 
+display Pinging Google (8.8.8.8) to check for basic connectivity...
+ping 8.8.8.8
+display 
+display This may take a few moments.
+wait 5
+display 
+display Another ping test...
+ping www.google.com
+display 
+display End of network test.
