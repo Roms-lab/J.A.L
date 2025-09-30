@@ -1,3 +1,5 @@
+<img width="350" height="120" alt="svgviewer-png-output" src="https://github.com/user-attachments/assets/4cec72a3-d671-4e23-8457-f1dd6490f6cf" />
+
 # J.A.L.
 
 **J**ust **A**nother **L**ine.
