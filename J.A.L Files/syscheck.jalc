@@ -1,0 +1,12 @@
+display --- System and Network Health Check ---
+display 
+display Current Working Directory:
+pwd
+display 
+display Your IP Configuration:
+ipconfig
+display 
+display Active Processes:
+ps
+display 
+display End of System Check.
