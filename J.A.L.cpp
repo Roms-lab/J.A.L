@@ -76,6 +76,42 @@ void RunCommand(std::string& Command) {
     else if (Command.rfind("color ", 0) == 0) {
         std::system(("color " + Command.substr(6)).c_str());
     }
+    // J.A.L Wait Command
+    else if (Command.rfind("wait ", 0) == 0) {
+        std::string wait_seconds = Command.substr(5);
+        std::string full_command = "timeout /t " + wait_seconds + " /nobreak > nul";
+        std::system(full_command.c_str());
+    }
+    // J.A.L pwd Command
+    else if (Command.rfind("pwd", 0) == 0) {
+        std::string pwd = Command.substr(3);
+        std::string full_pwd = "echo %cd%";
+        std::system(full_pwd.c_str());
+    }
+    // J.A.L cd Command
+    else if (Command.rfind("cd ", 0) == 0) {
+        std::string cd = Command.substr(3);
+        std::string full_cd = "cd " + cd;
+        std::system(full_cd.c_str());
+    }
+    // J.A.L clear Command
+    else if (Command.rfind("clear", 0) == 0) {
+        std::string clear = Command.substr(5);
+        std::string full_clear = "cls";
+        std::system(full_clear.c_str());
+    }
+    // J.A.L cat Command
+    else if (Command.rfind("cat ", 0) == 0) {
+        std::string cat = Command.substr(4);
+        std::string full_cat = "type " + cat;
+        std::system(full_cat.c_str());
+    }
+    // J.A.L pip install Command -- Only if python installed --
+    else if (Command.rfind("pip install ", 0) == 0) {
+        std::string pip_install = Command.substr(12);
+        std::string full_pip = "pip install " + pip_install;
+        std::system(full_pip.c_str());
+    }
     // J.A.L Empty Line
     else if (Command.empty()) {
         // Do nothing for empty input.
