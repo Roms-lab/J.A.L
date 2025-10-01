@@ -9,6 +9,8 @@ display
 display Active Processes:
 powershell
 ps
+exitps
 display 
 
 display End of System Check.
+
