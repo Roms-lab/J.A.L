@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <string>
-#include <fstream> // Required for file input
+#include <fstream>
 
 // -------------------------------------------------
 // GLOBAL STATE
@@ -62,8 +62,8 @@ void RunCommand(const std::string& Command) {
     else if (current_command == "taskmgr") {
         std::system("taskmgr");
     }
-    // Start PowerShell mode
-    else if (current_command == "ps" || current_command == "powershell") {
+    // Start PowerShell mode (now only for the 'powershell' command)
+    else if (current_command == "powershell") {
         UsePowerShell = true;
         UseCmd = false;
         std::cout << "[PowerShell mode] Type commands – they will be executed via PowerShell.\n";
@@ -129,6 +129,11 @@ void RunCommand(const std::string& Command) {
     }
     else if (current_command.rfind("pip install ", 0) == 0) {
         std::system(("pip install " + current_command.substr(12)).c_str());
+    }
+    else if (current_command.rfind("ps", 0) == 0) {
+        // Execute the "ps" command directly via the system shell
+        // This relies on "ps" being aliased or available in the system path
+        std::system("powershell -command ps");
     }
     else if (current_command.empty()) {
         // nothing
