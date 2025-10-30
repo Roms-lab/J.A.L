@@ -32,9 +32,9 @@ Follow these steps to build and run J.A.L. on your machine using GCC.
     ```
 2.  **Build with GCC**:
     ```sh
-    g++ -o J.A.L.exe J.A.L.cpp -std=c++17
+    g++ -o J.A.L.exe J.A.L.cpp -std=c++20
     ```
-    *Note: The `-std=c++17` flag enables modern C++ features. You may need to add additional flags or link specific libraries depending on your implementation.*
+    *Note: The `-std=c++20` flag enables modern C++ features. You may need to add additional flags or link specific libraries depending on your implementation.*
 3.  **Run J.A.L.**:
     ```sh
     .\J.A.L.exe
