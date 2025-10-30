@@ -49,5 +49,7 @@ Follow these steps to build and run J.A.L. on your machine using GCC.
 
 ### Supported J.A.L Command Conversions
 **display**
+
 **wait**
+
 **ping**
