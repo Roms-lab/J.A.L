@@ -1,0 +1,18 @@
+display Hello, J.A.L Compiler!
+
+wait 2
+
+display This is a demonstration of the 'display' and 'wait' commands.
+
+wait 3
+
+display Pinging example.com to test network connectivity...
+ping example.com
+
+display This compiler can also open files.
+display Opening the README file...
+open README.md
+
+wait 5
+
+display All features demonstrated successfully!
