@@ -46,3 +46,8 @@ Follow these steps to build and run J.A.L. on your machine using GCC.
 **Linux**: ❌
 
 **MacOS**: ❌
+
+### Supported J.A.L Command Conversions
+**display**
+**wait**
+**ping**
