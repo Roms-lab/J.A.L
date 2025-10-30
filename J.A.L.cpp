@@ -11,6 +11,12 @@ bool UsePowerShell = false;  // true when we are in PowerShell mode
 bool UseCmd = false;         // true when we are in Cmd mode
 
 // -------------------------------------------------
+// CONVERT JAL TO C
+// -------------------------------------------------
+
+module J.A.L_Converter;
+
+// -------------------------------------------------
 // RUN ONE COMMAND (now accepts a constant string reference)
 // This version is safer for processing commands from a file
 // since it doesn't modify the input string.
@@ -61,6 +67,9 @@ void RunCommand(const std::string& Command) {
     // J.A.L Task Manager Call
     else if (current_command == "taskmgr") {
         std::system("taskmgr");
+    }
+    else if (current_command == "RDC") {
+        std::system("mstsc");
     }
     // Start PowerShell mode (now only for the 'powershell' command)
     else if (current_command == "powershell") {
@@ -134,6 +143,10 @@ void RunCommand(const std::string& Command) {
         // Execute the "ps" command directly via the system shell
         // This relies on "ps" being aliased or available in the system path
         std::system("powershell -command ps");
+    }
+    else if (current_command.rfind("JCompile", 0) == 0) {
+        ConvertJAL();
+        std::cout << "Finsied Compiling. See Output.c for Source.\n";
     }
     else if (current_command.empty()) {
         // nothing
