@@ -54,3 +54,5 @@ Follow these steps to build and run J.A.L. on your machine using GCC.
 - **wait**
 
 - **ping**
+
+- **open**
