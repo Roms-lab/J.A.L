@@ -13,6 +13,7 @@ J.A.L. is a hybrid command-line shell and interpreter that elevates the standard
 -   **Smart Command Dispatch**: J.A.L. intelligently routes external commands to the correct underlying shell, so you can run `ipconfig` or any other external command without thinking about where it lives.
 -   **Extensible and Modern**: Easily add new commands by writing simple C++ functions and integrating them into J.A.L.'s core.
 -   **Command Language**: A clean, intuitive command language for scripting and automation, designed for modern development workflows.
+-   **Compilation To C**: Use the JCompile command to compile native .jalc files into optimized C code.
 
 ## 🚀 Getting Started
 
